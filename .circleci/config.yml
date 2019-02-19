@@ -6,8 +6,12 @@ jobs:
     steps:
       - checkout
       - run: sudo apt-get install asciidoctor hugo
-      - run: hugo -v
+      - run: hugo -v -d www
       - deploy:
           name: Deploy with SFTP
           command: |
-            sftp -b public/ $SFTP_USER:$SFTP_PASS@$SFTP_HOST:/home/cekitiodef/www
+            sftp $SFTP_USER:$SFTP_PASS@$SFTP_HOST:/home/$SFTP_USER << EOF
+            cd /home/$SFTP_USER
+            put -r www
+            bye
+            EOF
