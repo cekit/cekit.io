@@ -5,6 +5,7 @@ jobs:
       image: circleci/classic:201808-01
     steps:
       - checkout
+      - run: git submodule init && git submodule update
       - run: sudo apt-get install asciidoctor hugo lftp
       - run: hugo -v -d www
       - deploy:
