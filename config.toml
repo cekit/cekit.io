@@ -1,4 +1,4 @@
-baseurl = "https://cekit.io/"
+baseurl = "http://cekitiodef.cluster021.hosting.ovh.net/"
 languageCode = "en-us"
 title = "Cekit"
 theme = "hugo-strata-theme"

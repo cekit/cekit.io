@@ -5,13 +5,9 @@ jobs:
       image: circleci/classic:201808-01
     steps:
       - checkout
-      - run: sudo apt-get install asciidoctor hugo sshpass
+      - run: sudo apt-get install asciidoctor hugo lftp
       - run: hugo -v -d www
       - deploy:
           name: Deploy with SFTP
           command: |
-            SSHPASS=$SFTP_PASS sshpass -e sftp -oBatchMode=no -b - sftp $SFTP_USER@$SFTP_HOST << EOF
-            cd /home/$SFTP_USER
-            put -r www
-            bye
-            EOF
+            lftp -e "mirror -R www /www ; bye" -u $SFTP_USER,$SFTP_PASS $SFTP_HOST
