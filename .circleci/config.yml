@@ -10,7 +10,7 @@ jobs:
       - deploy:
           name: Deploy with SFTP
           command: |
-            SSHPASS=$SFTP_PASS sshpass -e sftp -oBatchMode=no -b - sftp $SFTP_USER@$SFTP_HOST:/home/$SFTP_USER << EOF
+            SSHPASS=$SFTP_PASS sshpass -e sftp -oBatchMode=no -b - sftp $SFTP_USER@$SFTP_HOST << EOF
             cd /home/$SFTP_USER
             put -r www
             bye
