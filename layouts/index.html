@@ -1,0 +1,18 @@
+{{ define "main" }}
+{{ if not .Site.Params.about.hide }}
+{{ partial "about" . }}
+{{ end }}
+
+{{ if not .Site.Params.features.hide }}
+{{ partial "features" . }}
+{{ end }}
+
+{{ if not .Site.Params.gettingstarted.hide }}
+{{ partial "getting-started" . }}
+{{ end }}
+
+{{ if not .Site.Params.recentposts.hide }}
+{{ partial "recent-posts" . }}
+{{ end }}
+
+{{ end }}

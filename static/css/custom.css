@@ -1,0 +1,76 @@
+.image.avatar img {
+  border-radius: 5%;
+  width: 100%;
+}
+
+#header {
+  background-image: url("../images/samuel-zeller-356182-unsplash.jpg");
+  background-color: #444;
+  color: rgba(255, 255, 255, 1);
+}
+
+#header h1 {
+  color: rgb(162, 162, 162);
+}
+
+section > h2  {
+  font-size: 2em;
+  margin-bottom: 1em;
+}
+
+pre code {
+    margin: 1em 0;
+}
+
+.work-item h3 {
+  font-size: 1.3em;
+}
+
+.work-item p {
+  font-size: 1em;
+  margin-top: 0.5em;
+}
+
+#main > section {
+  margin: 0;
+  padding: 1em 0 0 0;
+  border: none;
+}
+
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a, #sidebar ul li a, #sidebar ul li a a:visited {
+    color: #84bce6;
+    border-bottom: none;
+}
+
+a {
+  color: rgb(132, 188, 230);
+  border-bottom: none;
+}
+
+a:hover {
+  color: rgb(44, 148, 227) !important;
+  border-bottom: none;
+}
+
+p {
+    margin: 0 0 1.5em 0;
+}
+
+#footer {
+  border-top: rgba(0, 0, 0, 0.2) solid 5px;
+  background-image: none;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding-bottom: 1em;
+}
+
+#footer .copyright {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.8em;
+}
+
+body,
+input,
+select,
+textarea {
+  font-size: 17pt;
+}

@@ -1,0 +1,17 @@
+---
+title: "Welcome to our new website!"
+author: "Marek Goldmann"
+date: 2019-02-19
+tags: ["general"]
+draft: false
+---
+
+It took quite some time to prepare it, but we finally made it! Welcome to the official Cekit website.
+
+You can expect to have the latest information related to the project available on this blog. The Cekit
+team will try to feed you with articles and guides to make the use of the project more pleasant. Besides this
+you will exactly know what's cooking next in the https://github.com/cekit/cekit/tree/develop[development branch].
+
+Have you noticed our logo yet? It's a great work of the https://issues.jboss.org/browse/DESIGN-1475[Red Hat Middleware Design Team]. Thank you guys! 👏
+
+If you have any requests related to this website or comments what you woould like to see here, let us know in the comments below. 👇

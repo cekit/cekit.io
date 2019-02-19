@@ -1,0 +1,62 @@
+baseurl = "https://cekit.io/"
+languageCode = "en-us"
+title = "Cekit"
+theme = "hugo-strata-theme"
+disqusShortname = "cekit-io"
+googleAnalytics = ""
+paginate = 10
+
+[params]
+	name = "Cekit"
+	description = "Container image creation tool"
+	date_format = "2006-01-02"
+	show_read_time = true
+	custom_js   = []
+	custom_css  = ["css/custom.css"]
+
+	[params.sidebar]
+		avatar = "256px.png"
+		bio = "Container image development and maintenance simplified"
+		twitter = "cekit_project"
+		github = "cekit"
+		copyright = [
+			"&copy; Cekit team",
+			"Photo by Samuel Zeller / Unsplash"
+		]
+
+	[params.about]
+		hide  = false
+		title = "Container image creation tool"
+		content = "Cekit helps to build container images from image definition files with strong focus on modularity and code reuse."
+
+	[params.features]
+		hide  = false
+		title = "Features"
+
+	[params.gettingstarted]
+		hide  = false
+		title = "Getting started"
+
+	[params.recentposts]
+		hide  = false
+		title = "Recent blog posts"
+
+[[menu.main]]
+	name = "Home"
+	url  = "/"
+	weight = 10
+
+[[menu.main]]
+	name = "Blog"
+	url  = "post/"
+	weight = 0
+
+[[menu.main]]
+	name = "Docs"
+	url  = "https://cekit.readthedocs.io"
+	weight = 0
+
+[[menu.main]]
+	name = "GitHub"
+	url  = "https://github.com/cekit/cekit"
+	weight = 0

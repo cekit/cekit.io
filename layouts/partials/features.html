@@ -1,0 +1,57 @@
+{{ "<!-- features -->" | safeHTML }}
+<section id="features">
+  {{ with.Site.Params.features.title }}
+  <h2>{{ . | markdownify }}</h2>
+  {{ end }}
+  <div class="row">
+    <article class="6u 12u$(xsmall) work-item">
+      <h3>Image descriptors</h3>
+      <p>
+        Define container images in YAML format which is easy to read and parse!
+      </p>
+      <pre><code>from: "centos:7"
+name: "centos/openjdk-8-centos7"
+version: "1.6"
+description: "Source To Image (S2I) image for Red Hat OpenShift providing OpenJDK 8"</code></pre>
+      <p>
+        See the
+        <a
+          href="https://github.com/jboss-container-images/openjdk/blob/develop/image.yaml"
+          >OpenJDK image</a
+        >
+        for full example.
+      </p>
+    </article>
+
+    <article class="6u 12u$(xsmall) work-item">
+      <h3>Image testing built-in</h3>
+      <p>It's easy to write tests for your container images.</p>
+      <pre><code>Scenario: Check that common labels are correctly set
+    Given image is built
+    Then the image should contain label version
+    And the image should contain label name
+    And the image should contain label io.openshift.s2i.scripts-url with value image:///usr/local/s2i</code></pre>
+      <p>
+        By default we support multiple test steps. If that's not enough you can
+        write your own too!
+      </p>
+    </article>
+
+    <article class="6u 12u$(xsmall) work-item">
+      <h3>Modules</h3>
+      <p>Module descriptors define building blocks for container images.</p>
+      <p>
+        <strong>Compose</strong> images out of <strong>modules</strong>. Store
+        them on GitHub, share and reuse them between your images!
+      </p>
+    </article>
+
+    <article class="6u 12u$(xsmall) work-item">
+      <h3>Multiple builders support</h3>
+      <p>
+        Build images using Docker, Buildah or OSBS. We plan to add support for
+        Podman in the near future too!
+      </p>
+    </article>
+  </div>
+</section>
