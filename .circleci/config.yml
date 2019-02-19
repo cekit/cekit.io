@@ -5,7 +5,7 @@ jobs:
       image: circleci/classic:201808-01
     steps:
       - checkout
-      - run: sudo apt-get install asciidoctor hugo
+      - run: sudo apt-get install asciidoctor hugo sshpass
       - run: hugo -v -d www
       - deploy:
           name: Deploy with SFTP
