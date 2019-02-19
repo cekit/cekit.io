@@ -6,4 +6,5 @@ jobs:
     steps:
       - checkout
       - run: echo 'export PATH=~/.local/bin:$PATH' >> $BASH_ENV
-      - run: cd ~/.local/bin && curl -L https://github.com/gohugoio/hugo/releases/download/v0.54.0/hugo_extended_0.54.0_Linux-64bit.tar.gz | tar xvz
+      - run: mkdir ~/.local/bin && cd ~/.local/bin && curl -L https://github.com/gohugoio/hugo/releases/download/v0.54.0/hugo_extended_0.54.0_Linux-64bit.tar.gz | tar xvz
+      - run: hugo -v
