@@ -10,7 +10,23 @@ jobs:
       - run: cd ~/bin && curl -L https://github.com/gohugoio/hugo/releases/download/v0.54.0/hugo_extended_0.54.0_Linux-64bit.tar.gz | tar xvz
       - run: echo 'export PATH=~/bin:$PATH' >> $BASH_ENV
       - run: hugo -v -d www
-      - deploy:
+  deploy:
+    machine:
+      image: circleci/classic:201808-01
+    steps:
+      - run:
           name: Deploy with SFTP
           command: |
             lftp -e "mirror -R www /www ; bye" -u $SFTP_USER,$SFTP_PASS $SFTP_HOST
+
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
