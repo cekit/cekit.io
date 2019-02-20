@@ -12,6 +12,7 @@ You can expect to have the latest information related to the project available o
 team will try to feed you with articles and guides to make the use of the project more pleasant. Besides this
 you will exactly know what's cooking next in the https://github.com/cekit/cekit/tree/develop[development branch].
 
-Have you noticed our logo yet? It's a great work of the https://issues.jboss.org/browse/DESIGN-1475[Red Hat Middleware Design Team]. Thank you guys! 👏
+If you have any comments what other things you would like to see on this website here, let us know in the comments below. 👇
 
-If you have any requests related to this website or comments what you woould like to see here, let us know in the comments below. 👇
+Oh, have you noticed our logo yet? It's a https://issues.jboss.org/browse/DESIGN-1475[great work of the Red Hat Middleware Design Team].
+Thank you guys! 👏
