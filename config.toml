@@ -1,13 +1,13 @@
 baseurl = "https://cekit.io/"
 languageCode = "en-us"
-title = "Cekit"
+title = "CEKit"
 theme = "hugo-strata-theme"
 disqusShortname = "cekit-io"
-googleAnalytics = ""
+googleAnalytics = "UA-134837956-1"
 paginate = 10
 
 [params]
-	name = "Cekit"
+	name = "CEKit"
 	description = "Container image creation tool"
 	date_format = "2006-01-02"
 	show_read_time = true
@@ -20,14 +20,14 @@ paginate = 10
 		twitter = "cekit_project"
 		github = "cekit"
 		copyright = [
-			"&copy; Cekit team",
+			"&copy; CEKit team",
 			"Photo by Samuel Zeller / Unsplash"
 		]
 
 	[params.about]
 		hide  = false
 		title = "Container image creation tool"
-		content = "Cekit helps to build container images from image definition files with strong focus on modularity and code reuse."
+		content = "CEKit helps to build container images from image definition files with strong focus on modularity and code reuse."
 
 	[params.features]
 		hide  = false

@@ -6,9 +6,9 @@ tags: ["general"]
 draft: false
 ---
 
-It took quite some time to prepare it, but we finally made it! Welcome to the official Cekit website.
+It took quite some time to prepare it, but we finally made it! Welcome to the official CEKit website.
 
-You can expect to have the latest information related to the project available on this blog. The Cekit
+You can expect to have the latest information related to the project available on this blog. The CEKit
 team will try to feed you with articles and guides to make the use of the project more pleasant. Besides this
 you will exactly know what's cooking next in the https://github.com/cekit/cekit/tree/develop[development branch].
 
