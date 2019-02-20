@@ -8,11 +8,13 @@ jobs:
       - run: git submodule init && git submodule update
       - run: sudo apt-get install asciidoctor
       - run: cd ~/bin && curl -L https://github.com/gohugoio/hugo/releases/download/v0.54.0/hugo_extended_0.54.0_Linux-64bit.tar.gz | tar xvz
-      - attach_workspace:
-          at: /tmp/workspace
-      - run: hugo -v -d /tmp/workspace/www
+      - run: hugo -v -d www
       - store_artifacts:
-          path: /tmp/workspace/www
+          path: www
+      - persist_to_workspace:
+          root: $CIRCLE_WORKING_DIRECTORY
+          paths:
+            - www
   deploy:
     machine:
       image: circleci/classic:201808-01
