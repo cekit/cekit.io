@@ -34,7 +34,7 @@ paginate = 10
 		title = "Features"
 
 	[params.gettingstarted]
-		hide  = false
+		hide  = true
 		title = "Getting started"
 
 	[params.recentposts]
