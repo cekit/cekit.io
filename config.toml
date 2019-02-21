@@ -53,7 +53,7 @@ paginate = 10
 
 [[menu.main]]
 	name = "Docs"
-	url  = "https://cekit.readthedocs.io"
+	url  = "https://docs.cekit.io"
 	weight = 30
 
 [[menu.main]]
