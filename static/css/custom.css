@@ -26,6 +26,25 @@ pre code {
   font-size: 1.3em;
 }
 
+li > p {
+    margin-bottom: 0.2em;
+}
+
+.sect1 {
+    margin-top: 1em;
+}
+
+.sect2 {
+    margin-top: 1em;
+}
+
+.sect1 > h2 {
+    margin-bottom: 0.5em;
+}
+
+.sect2 > h3 {
+    margin-bottom: 0.5em;
+}
 .work-item p {
   font-size: 1em;
   margin-top: 0.5em;

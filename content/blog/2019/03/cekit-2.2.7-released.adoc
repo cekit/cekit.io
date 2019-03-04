@@ -1,0 +1,18 @@
+---
+title: "CEKit 2.2.7 released"
+author: "Marek Goldmann"
+date: 2019-03-04
+tags: ["release"]
+draft: false
+---
+
+A fresh bugfix https://github.com/cekit/cekit/releases/tag/2.2.7[2.2.7 release] is now out!
+https://developers.redhat.com/products/datavirt/overview/[One of our users] found two issues related
+to artifact handling in the OSBS builder. See changelog below for issue details.
+
+CEKit 2.2.7 is immediately https://docs.cekit.io/en/latest/installation.html#upgrading[available for upgrade].
+
+== Changelog
+
+* Artifacts are not downloaded from unsuccessful builds in Koji, https://github.com/cekit/cekit/issues/415[#415]
+* Handling artifacts that specify `target` has been fixed in the OSBS builder, https://github.com/cekit/cekit/issues/414[#414]
