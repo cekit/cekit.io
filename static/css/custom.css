@@ -20,6 +20,12 @@ section > h2  {
 
 pre code {
     margin: 1em 0;
+    background-color: inherit;
+    border-radius: 0;
+}
+
+.chroma .hl {
+    background-color: rgb(58, 24, 71);
 }
 
 .work-item h3 {
