@@ -1,0 +1,99 @@
+---
+title: "Upcoming changes in CLI"
+author: "Marek Goldmann"
+date: 2019-03-12
+tags: ["3.0", "development"]
+draft: false
+---
+
+As part of link:https://github.com/orgs/cekit/projects/5[CEKit 3.0 development] we spend
+some time on reviewing existing 2.x code. Many areas were identified  where an of improvements were identified and some
+of them were already adjusted! We plan series of blog posts about most important changes
+that will be part of CEKit 3.0. This is the first one.
+
+One of the parts that was under heavy review was the
+link:https://github.com/cekit/cekit/issues/364[CLI itself]. We found that the CLI was bloated
+and the usage was not clear at all.
+
+The CLI was link:https://github.com/cekit/cekit/issues/364[redesigned from scratch]. We switched
+from link:https://docs.python.org/3/library/argparse.html[argparse] to link:https://click.palletsprojects.com/[Click]
+which provides much cleaner definition of commands. This one change triggered a
+link:https://github.com/cekit/cekit/pull/412[fairly massive rewrite of the codebase]. Yes, this PR contains a few other
+things, but nonetheless it's huge :)
+
+== New CLI overview
+
+New CLI besides being a complete rewrite of the old one, introduces many changes. You will find
+that the usage differs from what you are used to.
+
+=== Parameters are grouped with commands
+
+This means that you can set only these parameters that are available for the command you execute
+and not others. In previous version you could set anything anywhere. While it was handy
+(you did not care about the order) it was very hard to understand what you can set for
+particular command and which parameters were actually ignored!
+
+With this rewrite when you define a parameter you need to know where it belongs to:
+
+{{< highlight bash >}}
+# This is correct
+$ cekit -v build --overrides '{"from": "centos:6"}' docker
+# This is wrong!
+$ cekit -v build docker --overrides '{"from": "centos:6"}'
+{{< /highlight >}}
+
+The second way of defining overrides *is wrong*, because the `--overrides` parameter belongs
+ o the `build` command and *not* to the `docker` builder command.
+
+=== The generate phase was replaced with `--dry-run` switch
+
+If you used previously the `cekit generate` command, it will not work anymore. You need to use
+the `--dry-run` switch from the `build` command:
+
+{{< highlight text "hl_lines=7" >}}
+$ cekit build --dry-run docker
+2019-03-12 11:11:59,826 cekit        WARNING  You are running unreleased development version of CEKit, use it only at your own risk!
+2019-03-12 11:11:59,826 cekit        INFO     You are running on known platform: Fedora 29 (Twenty Nine)
+2019-03-12 11:11:59,863 cekit        INFO     Generating files for docker engine
+2019-03-12 11:11:59,863 cekit        INFO     Initializing image descriptor...
+2019-03-12 11:11:59,869 cekit        INFO     Rendering Dockerfile...
+2019-03-12 11:11:59,905 cekit        INFO     The --dry-run parameter was specified, build will not be executed
+2019-03-12 11:11:59,905 cekit        INFO     Finished!
+{{< /highlight >}}
+
+=== Preparation for different test frameworks
+
+Just like we have multiple builders, the `test` command is now prepared to support
+different test frameworks. At this moment we support only Behave, but maybe
+in the future we will add more.
+
+=== Built-in help
+
+The CLI has now a built-in help, if you are unsure how to execute something, make good use
+of the `--help` parameter. This will print you all available options as well as usage instructions,
+if available.
+
+{{< highlight text >}}
+$ cekit test behave --help
+Usage: cekit test behave [OPTIONS]
+
+  DESCRIPTION
+
+      Execute Behave container image tests locally using Docker
+
+      NOTE: Image to test must be available in the Docker daemon. It won't be pulled
+      automatically!
+
+  EXAMPLES
+
+      Execute tests for the example/app:1.0 image
+
+          $ cekit test --image example/app:1.0 behave
+
+[SNIP]
+{{< /highlight >}}
+
+=== Summary
+
+Although the change is big we hope you will get used to the new CLI. If you have any comments
+about this change, let us know!

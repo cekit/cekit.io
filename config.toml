@@ -5,6 +5,7 @@ theme = "hugo-strata-theme"
 disqusShortname = "cekit-io"
 googleAnalytics = "UA-134837956-1"
 paginate = 10
+pygmentsUseClasses = true
 
 [params]
 	name = "CEKit"
@@ -12,7 +13,7 @@ paginate = 10
 	date_format = "2006-01-02"
 	show_read_time = true
 	custom_js   = []
-	custom_css  = ["css/custom.css"]
+	custom_css  = ["css/syntax.css", "css/custom.css"]
 
 	[params.sidebar]
 		avatar = "256px.png"
