@@ -1,0 +1,72 @@
+---
+title: "Module merging changes"
+author: "Marek Goldmann"
+date: 2019-04-16
+tags: ["3.0", "development"]
+draft: false
+---
+
+We are *very* close to release CEKit version 3.0. This is a great time to discuss one of the biggest changes
+we made in the codebase in preparation for 3.0: the *module merging process* rewrite.
+
+== Old style merging
+
+Since early days of CEKit all modules were processed and merged *internally*. What does it mean? Let's imagine
+we have an image descriptor that requires a few modules to install. These modules
+can define anything what is link:https://docs.cekit.io/en/develop/descriptor/module.html[available in the module descriptor].
+
+CEKit iterated over these modules and tried to build something that we called _effective image descriptor_. If there
+were for example labels to add, we had an array of labels which was extended with values found (if any)
+in next modules. Same applied to environment variables, packages and everything else actually.
+
+Such internal image descriptor was then processed by (a fairly simple) template which produced the Dockerfile used to
+build the image.
+
+== What's wrong with this approach?
+
+We found that above approach can be **tricky to implement correctly**.
+
+One of problematic areas is package installation. All packages, from all modules were combined together in a list. Such list of packages
+was installed in the image in one go, as one of the first steps in the template. What if package installation makes only sense when some requirements
+are fulfilled? For example when a repository definition is required to be present, which is added by some module?
+
+Environment variables can be also problematic. If we define the same environment variable in multiple modules, only the last module's
+value would be added to the container image. In most cases this is fine, but what if we rely on this environment variable
+at the time of module installation? We expect something that we set in this module, but it was overridden by some other module which
+leads to an error.
+
+As you can probably already see -- there are potentially other cases where such approach can provide unexpected results.
+
+== The change
+
+We found that it's best to look at modules as *units of work*. Everything that is defined in the module should be applied
+exactly where it belongs to, as a whole, without the attempt to smartly handle it.
+
+With the new approach we iterate over modules in the defined installation order in the template itself.
+Modules are applied (processed) serially.
+
+This gives full control over how images are composed to image developer. If there are some prerequisites for a module,
+these can be satisfied by changes in a previous module on the list to install.
+
+== Tradeoffs of new approach
+
+Of course there are always tradeoffs. We gained more control over the content, but the image build process
+**can take more time**. This is the result of multiple executions of the same instruction.
+For example if we define labels in all 10 modules
+we are going to install, we will run the `LABEL` instruction 10 times. Same applies to package installation,
+which highlights another tradeoff: **intermediate image can be bigger**.
+
+This shouldn't be a problem in general, because
+we now link:https://github.com/goldmann/docker-squash[squash] by default every image that is built with the link:https://docs.cekit.io/en/develop/handbook/building/builder-engines.html#docker-builder[Docker engine].
+Other engines may squash images automatically for you. For example link:https://docs.cekit.io/en/develop/handbook/building/builder-engines.html#buildah-builder[Buildah]
+and link:https://docs.cekit.io/en/develop/handbook/building/builder-engines.html#osbs-builder[OSBS] do this.
+
+NOTE: You can disable squashing for Docker engine by specifying th `--no-squash` flag.
+
+== Summary
+
+In many cases you will not notice this change since this is actually an implementation detail and the resulting images
+should be exactly the same. But in case if you build sophisticated images, it may be important to understand
+how it works internally to fully leverage CEKit.
+
+NOTE: You may want to read about link:https://docs.cekit.io/en/develop/handbook/modules/merging.html[module processing] in our documentation too!
