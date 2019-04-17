@@ -1,0 +1,85 @@
+---
+title: "CEKit 3.0.0 released"
+author: "Marek Goldmann"
+date: 2019-04-17
+tags: ["release"]
+draft: false
+---
+
+Phew, that was quite some work, but we made it finally! We're very happy to announce immediate availability
+of **CEKit 3.0.0**!
+
+Before we dive into details we would like to thank following people for their help on the release (no particular order)
+
+* **Jonathan Dowland**; bug reports, testing, feedback
+* **Ken Wills**, testing, feedback
+* **Nick Cross**; contributions
+* **David Ward**; testing, feedback
+
+It also a great time to thank **David Becvarik**, previous CEKit project leader, for his dedication to make CEKit a better project 👏
+Thank you and good luck in your new role!
+
+== Major changes
+
+The CEKit code base was updated in almost every place of it. There are however some changes which make the 3.0
+experience different from the 2.x.
+
+We can find three major changes compared to 2.x releases:
+
+* New CLI
+* Module merging was rewritten
+* link:https://docs.cekit.io/[Shiny new documentation]
+
+=== New CLI
+
+We talked about link:https://cekit.io/blog/2019/03/upcoming-changes-in-cli/[CLI changes in one ouf our previous blog posts]. We use now
+a link:https://click.palletsprojects.com[different CLI framework]. This let us clean up the CLI and place parameters **only where they belong**.
+This means that it's now important where you specify parameters. Use `--help` if you are lost.
+
+=== Modules are applied as separate layers
+
+Instead of smartly merge all modules, these are now applied one by one. You can read more about this new approach and
+reasoning behind the change in our link:https://cekit.io/blog/2019/04/module-merging-changes/[yesterday's blog post].
+
+=== New documentation
+
+One of the biggest effort was to rewrite documentation. A project without good documentation is useless. We hope now that
+link:https://docs.cekit.io[our new documentation] will make it easier to use this project. This is not the end.
+Documentation will be extended with every new release. You can help too! We link:https://docs.cekit.io/en/latest/contribution-guide/index.html[welcome any contributions!]
+
+== How to get it?
+
+Please follow our link:https://docs.cekit.io/en/latest/handbook/installation/instructions.html[installation instructions documentation].
+If you want to use RPM packages to install CEKit, these are already built but these may not be still available in the repositories
+because of the Fedora release process. You can find links to updates below where you can find appropriate builds
+in case you want to install them directly.
+
+* Fedora 29: https://bodhi.fedoraproject.org/updates/FEDORA-2019-35c2440206
+* Fedora 30: https://bodhi.fedoraproject.org/updates/FEDORA-2019-057307b2c6
+* EPEL 7: https://bodhi.fedoraproject.org/updates/FEDORA-EPEL-2019-10288cc465
+
+CEKit link:https://pypi.org/project/cekit/3.0.0/[3.0.0 is available from PyPi too] if you want to install it on a
+link:https://docs.cekit.io/en/latest/handbook/installation/instructions.html#other-systems[different system or using virtualenv].
+
+== Is 2.x still supported?
+
+Generally speaking: **no**.
+
+CEKit 2.x is not maintained anymore and all development work is now focused on 3.x.
+
+In case you use 2.x we recommend to upgrade to 3.0 as soon as possible. If this is not feasible to do immediately,
+you can still use 2.x, but we do not plan to release any new versions of 2.x. Images built in CEKit 2.x and CEKit 3.x
+should be compatible (as long as you don't use features that were dropped). These images use different Dockerfile
+to build the image, but the result should be the same.
+
+If you find a critical error in 2.2.7 release (latest 2.x version), link:https://github.com/cekit/cekit/issues/new/choose[let us know].
+If we agree with you that this may expose our users to serious issues, we may prepare a new 2.x release. Please bear in mind that this is
+an exception from the rule.
+
+== Get in touch!
+
+If you have questions, feel free to join our new `#cekit` IRC channel on Freenode. You can always link:https://github.com/cekit/cekit/issues/new/choose[open a ticket with us].
+
+== Changelog
+
+Full link:https://github.com/cekit/cekit/releases/tag/3.0.0[changelog can be found on GitHub].
