@@ -1,0 +1,59 @@
+---
+title: "CEKit 3.1.0 released"
+author: "Marek Goldmann"
+date: 2019-06-04
+tags: ["release"]
+draft: false
+---
+
+After link:/blog/2019/04/cekit-3.0.0-released/[3.0.0 release] we decided make our release cycle faster.
+We're not afraid of new version numbers, you shouldn't be too 😏
+
+From now on you can expect new minor releases come
+out faster. These will be less feature-packed but on other hand this will let us shorten
+the time between a bug/feature report and the release containing the fix.
+
+Above introduction would be meaningless without a release, so here it is!
+
+== 3.1.0 is out!
+
+CEKit 3.1.0 was just released!
+
+It contains a few bug fixes for issues reported by users as well as some internal changes
+to the tool that should make it more stable and smarter.
+
+You can read the link:https://github.com/cekit/cekit/releases/tag/3.1.0[full changelog on GitHub].
+
+Besides this, we added support for supplementary dist-git items which is discussed below.
+
+== Supplementary dist-git files
+
+Some teams requested the ability to make it possible to maintain upstream set of files that
+should be then synced with dist-git repository. There were some iteration on the proposed
+design, but we finalized on following one.
+
+If an `osbs_extra` directory will be found next to the image descriptor, then the *contents*
+of that directory will be copied into the root of the dist-git repository.
+
+The directory name where to look for files can be controlled in the image descriptor in the
+`osbs` section:
+
+{{< highlight yaml >}}
+osbs:
+    extra_dir: custom-files
+{{< /highlight >}}
+
+You can find link:http://docs.cekit.io/en/latest/descriptor/image.html#osbs-extra-directory[this information in documentation too].
+
+⚠️ Please be aware that files in dist-git will be overridden by the files from the supplementary files directory.
+
+https://github.com/cekit/cekit/issues/394
+
+== Availability
+
+This release is immediately available on link:https://pypi.org/project/cekit/[PyPI]. Packages
+were built for Fedora and EPEL too.
+
+Latest packages submitted for particular Fedora or EPEL versions can be found always in
+link:https://bodhi.fedoraproject.org/updates/?packages=cekit[Bodhi]. Besides this you can always
+see link:https://koji.fedoraproject.org/koji/packageinfo?packageID=28120[latest CEKit builds in Koji].
