@@ -4,7 +4,7 @@ RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 <IfModule mod_headers.c>
 Header set Strict-Transport-Security "max-age=63072000"
-Header set Content-Security-Policy "frame-ancestors 'none'; default-src https:"
+Header set Content-Security-Policy "frame-ancestors 'none'; default-src https: 'unsafe-inline' https://www.google-analytics.com https://disqus.com https://*.disqus.com https://*.disquscdn.com;"
 Header set X-Content-Type-Options "nosniff"
 Header set X-Frame-Options "DENY"
 Header set X-XSS-Protection "1; mode=block"
