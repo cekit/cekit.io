@@ -1,0 +1,61 @@
+---
+title: "CEKit 3.2.0 is out!"
+author: "Marek Goldmann"
+date: 2019-06-26
+tags: ["release"]
+draft: false
+---
+
+Here we are with the next 3.2.0 release! This is generally a bugfix release with some additional
+usability improvements.
+
+Full link:https://github.com/cekit/cekit/releases/tag/3.2.0[changelog can be found here],
+below you can see highlights of this release.
+
+== Better macOS support
+
+As part of development we added support for link:https://travis-ci.com/cekit/cekit[executing tests on macOS platform in our CI].
+This should make the macOS experience better. In the future we plan to make
+CEKit installation easier on this platform as well.
+
+== Remote Docker daemon support
+
+This is something we missed but it's now fixed!. It is now possible to use remote Docker daemons
+to execute the build. You need to set a few environment variables, depending how you want
+to connect. Please refer to link:http://docs.cekit.io/en/latest/handbook/building/builder-engines.html#docker-environment-variables[documentation]
+for more information.
+
+https://github.com/cekit/cekit/issues/536
+
+== Support for disabling content sets
+
+When your image defines content sets - these disable any repository configuration you may have in your image
+descriptor and/or modules. In some cases you would want to disable content sets and define
+link:http://docs.cekit.io/en/latest/descriptor/image.html#package-repositories[custom repositories].
+This is now possible by using link:https://yaml.org/type/null.html[YAML null values].
+
+{{< highlight yaml >}}
+packages:
+  content_sets: ~
+{{< /highlight >}}
+
+You can of course use it as inline override too!
+
+{{< highlight bash >}}
+$ cekit build --override '{"packages": {"content_sets": ~}}' docker
+{{< /highlight >}}
+
+NOTE: You can remove `content_sets_file` section using this approach as well.
+
+https://github.com/cekit/cekit/issues/533
+
+== Availability
+
+This release is immediately available on link:https://pypi.org/project/cekit/[PyPI]. Packages
+were built for Fedora and EPEL too.
+
+Latest packages submitted for particular Fedora or EPEL versions can be found always in
+link:https://bodhi.fedoraproject.org/updates/?packages=cekit[Bodhi]. Besides this you can always
+see link:https://koji.fedoraproject.org/koji/packageinfo?packageID=28120[latest CEKit builds in Koji].
+
+Please follow our link:http://docs.cekit.io/en/latest/handbook/installation/index.html[installation instructions].
