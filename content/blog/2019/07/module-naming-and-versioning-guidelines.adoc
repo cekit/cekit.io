@@ -21,7 +21,7 @@ format will make it easier to reuse modules prepared by someone else.
 > See link:https://docs.cekit.io/en/develop/guidelines/modules/naming.html[development version of documentation]
 related to module naming.
 
-We suggest to use link:https://en.wikipedia.org/wiki/Reverse_domain_name_notation[reverse domain convention].
+We suggest using link:https://en.wikipedia.org/wiki/Reverse_domain_name_notation[reverse domain convention].
 You can see an example below:
 
 {{< highlight yaml >}}
