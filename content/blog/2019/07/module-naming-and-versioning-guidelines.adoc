@@ -1,0 +1,71 @@
+---
+title: "Module naming and versioning guidelines"
+author: "Marek Goldmann"
+date: 2019-07-11
+tags: ["guideline"]
+draft: false
+---
+
+As part of the upcoming 3.3.0 release preparation -- module documentation was updated
+in several places. Among other things module naming and versioning pages
+were added. Below you can find a summary of our suggestions.
+
+You can already browse the link:https://docs.cekit.io/en/develop/[development version of the documentation].
+It will become the main documentation after the 3.3.0 release.
+
+NOTE: You are free to use your own module name and versioning scheme, but standardizing on the same
+format will make it easier to reuse modules prepared by someone else.
+
+== Module naming
+
+> See link:https://docs.cekit.io/en/develop/guidelines/modules/naming.html[development version of documentation]
+related to module naming.
+
+We suggest using link:https://en.wikipedia.org/wiki/Reverse_domain_name_notation[reverse domain convention].
+You can see an example below:
+
+{{< highlight yaml >}}
+name: "org.jboss.container.openjdk"
+version: "11"
+description: "OpenJDK 11 module"
+{{< /highlight >}}
+
+In the image descriptor's module's installation section we could see something similar to this:
+
+{{< highlight yaml >}}
+modules:
+    install:
+        - name: "org.jboss.container.openjdk"
+          version: "11"
+        - name: "org.projecta.feature"
+          version: "1.2"
+        - name: "org.projectb.feature"
+          version: "1.12.1"
+{{< /highlight >}}
+
+Here are the main benefits of using such an approach:
+
+1.  Simplicity.
+2.  Module maintainer is known immediately by just looking at the name.
+3.  Module name clashes are unlikely.
+
+== Module versioning
+
+> See link:https://docs.cekit.io/en/develop/guidelines/modules/versioning.html[development version of documentation]
+related to module versioning.
+
+We suggest to follow link:https://www.python.org/dev/peps/pep-0440/[Python versioning scheme]
+which in the simplest for can be summarized by this:
+
+{{< highlight yaml >}}
+MAJOR.MINOR.MICRO
+{{< /highlight >}}
+
+Its design is very similar to link:https://semver.org/[semantic versioning scheme]. You can read
+about differences between these two link:https://www.python.org/dev/peps/pep-0440/#semantic-versioning[here].
+
+Although this versioning scheme does allow for suffixes, *we suggest to avoid them*.
+
+It's also worth to note that internally we parse module versions according to link:https://www.python.org/dev/peps/pep-0440/[Python versioning scheme].
+This means that if your versioning scheme does not follow it and there will be need to compare it against a
+PEP 440 defined version -- it will *always be older*. This is another reason to use suggested above versioning.
