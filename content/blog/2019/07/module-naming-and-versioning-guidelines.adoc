@@ -43,7 +43,7 @@ modules:
           version: "1.12.1"
 {{< /highlight >}}
 
-Here are the main benefits of using such approach:
+Here are the main benefits of using such an approach:
 
 1.  Simplicity.
 2.  Module maintainer is known immediately by just looking at the name.
