@@ -9,6 +9,14 @@
   color: rgba(255, 255, 255, 1);
 }
 
+strong {
+    color: #272727
+}
+
+blockquote {
+    padding: 0.5em;
+}
+
 #header h1 {
   color: rgb(162, 162, 162);
 }
@@ -68,7 +76,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a, #sidebar ul li a, #sidebar ul li a a:visited
 }
 
 a {
-  color: rgb(132, 188, 230);
+  color: rgb(95, 152, 196);
   border-bottom: none;
 }
 
@@ -79,6 +87,10 @@ a:hover {
 
 p {
     margin: 0 0 1.5em 0;
+}
+
+blockquote > div > p  {
+    margin: 0;
 }
 
 #footer {
@@ -98,4 +110,5 @@ input,
 select,
 textarea {
   font-size: 17pt;
+  color: rgb(128, 128, 128);
 }
