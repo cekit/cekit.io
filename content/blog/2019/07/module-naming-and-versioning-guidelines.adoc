@@ -10,7 +10,7 @@ As part of the upcoming 3.3.0 release preparation -- module documentation was up
 in several places. Among other things module naming and versioning pages
 were added. Below you can find a summary of our suggestions.
 
-You can already browse link:https://docs.cekit.io/en/develop/[development version of documentation].
+You can already browse the link:https://docs.cekit.io/en/develop/[development version of the documentation].
 It will became main documentation after 3.3.0 release.
 
 NOTE: You are free to use your own module name and versioning scheme, but standardizing on the same
