@@ -1,0 +1,61 @@
+---
+title: "CEKit 3.3.1 released"
+author: "Marek Goldmann"
+date: 2019-07-19
+tags: ["release"]
+draft: false
+---
+
+We have another exciting announcement in the pocket: the 3.3.1 version was just released!
+
+NOTE: Version 3.3.0 was never released due to the fact that we encountered
+issues with PyPi which made it impossible to push version 3.3.0 again.
+There are no changes in the code between version 3.3.0 and 3.3.1.
+
+== Say hi to 3.3.1!
+
+This release focuses on documentation improvements, especially in for modules.
+Other bigger change is that this we have fixed Dockerfile generation so that the Docker
+layer cache can be reused.
+
+You can read the link:https://github.com/cekit/cekit/releases/tag/3.3.1[full changelog on GitHub].
+
+== Module version is required
+
+Please note that although in documentation we have stated that
+link:https://docs.cekit.io/en/latest/descriptor/module.html#version[module's version key is required],
+we did not enforce it until now. This has been fixed and the version key requirement is enforced.
+
+If you have modules without version -- it's a good time to *fix it* because builds will *start fo fail*.
+
+== Docker layer reuse
+
+Template used to generate the `Dockerfile` was updates so that we can now utilize properly Docker layer cache.
+This is especially important when you develop the image locally. This saves a lot of time
+when doing rebuilds.
+
+We've extended link:https://docs.cekit.io/en/latest/guidelines/local-development.html#using-docker-cache[local development documentation to cover this topic].
+
+== Updated image help pages
+
+link:https://docs.cekit.io/en/latest/descriptor/image.html#help[Image help pages] were redesigned and extended.
+These should now provide all the required information about the image in a format that is nice to read.
+
+== Updated documentation
+
+We've spend some time on updating the documentation too!
+
+link:https://docs.cekit.io/en/latest/guidelines/modules/index.html[Module guidelines] include now information about naming and versioning!
+We strongly suggest to read and follow these. This will make your life easier.
+
+Additionally we added link:https://docs.cekit.io/en/latest/guidelines/artifacts.html[similar documentation for artifacts]. Hope
+you will find it useful!
+
+== Availability
+
+This release is immediately available on link:https://pypi.org/project/cekit/[PyPI]. Packages
+were built for Fedora and EPEL too.
+
+Latest packages submitted for particular Fedora or EPEL versions can be found always in
+link:https://bodhi.fedoraproject.org/updates/?packages=cekit[Bodhi]. Besides this you can always
+see link:https://koji.fedoraproject.org/koji/packageinfo?packageID=28120[latest CEKit builds in Koji].
