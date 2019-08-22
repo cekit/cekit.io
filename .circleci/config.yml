@@ -2,11 +2,26 @@ version: 2
 jobs:
   build:
     machine:
-      image: circleci/classic:201808-01
+      image: ubuntu-1604:201903-01
     steps:
+      - run:
+          name: "Prepare host for installation"
+          command: |
+            sudo killall apt-get || true
+            for service in apt-daily.service apt-daily-upgrade.service unattended-upgrades.service apt-daily.timer apt-daily-upgrade.timer; do
+              sudo systemctl stop ${service}
+              sudo systemctl kill --kill-who=all ${service} || true
+              sudo systemctl disable ${service}
+              sudo systemctl mask ${service}
+            done
+            sudo systemctl daemon-reload
+      - run:
+          name: "Install required packages"
+          command: |
+            sudo apt-get update
+            sudo apt-get install asciidoctor
       - checkout
       - run: git submodule init && git submodule update
-      - run: sudo apt-get install asciidoctor
       - run: cd ~/bin && curl -L https://github.com/gohugoio/hugo/releases/download/v0.54.0/hugo_extended_0.54.0_Linux-64bit.tar.gz | tar xvz
       - run: hugo -v -d www
       - store_artifacts:
@@ -17,9 +32,24 @@ jobs:
             - www
   deploy:
     machine:
-      image: circleci/classic:201808-01
+      image: ubuntu-1604:201903-01
     steps:
-      - run: sudo apt-get install lftp
+      - run:
+          name: "Prepare host for installation"
+          command: |
+            sudo killall apt-get || true
+            for service in apt-daily.service apt-daily-upgrade.service unattended-upgrades.service apt-daily.timer apt-daily-upgrade.timer; do
+              sudo systemctl stop ${service}
+              sudo systemctl kill --kill-who=all ${service} || true
+              sudo systemctl disable ${service}
+              sudo systemctl mask ${service}
+            done
+            sudo systemctl daemon-reload
+      - run:
+          name: "Install required packages"
+          command: |
+            sudo apt-get update
+            sudo apt-get install lftp
       - attach_workspace:
           at: /tmp/workspace
       - run:
