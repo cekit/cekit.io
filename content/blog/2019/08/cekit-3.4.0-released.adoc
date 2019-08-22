@@ -1,0 +1,49 @@
+---
+title: "CEKit 3.4.0 released"
+author: "Marek Goldmann"
+date: 2019-08-22
+tags: ["release"]
+draft: false
+---
+
+After almost a month after last release we have now a fresh one that just came out!
+Let me introduce CEKit 3.4.0 which is focused on adding support for multi-stage builds.
+
+You can read the link:https://github.com/cekit/cekit/releases/tag/3.4.0[full changelog on GitHub].
+
+== Multi-stage build support was added
+
+NOTE: Although the support for multi-stage builds is already baked, please consider this a
+*tech-preview* feature until 3.5 is out. If you are interested in multi-stage builds,
+we encourage you to test this feature and report all issues you will find.
+
+Multi-stage builds are a way to build container images without the need to install all the
+specific build-time dependencies required to build your application you want to run in the container.
+
+A great general introduction to multi-stage builds can be found in the link:https://docs.docker.com/develop/develop-images/multistage-build/[Docker documentation].
+
+NOTE: CEKit 3.4.0 documentation lacks information about multi-stage builds due to the tech-preview nature
+of this feature. Please refer to the next development version (3.5) documentation: https://docs.cekit.io/en/develop/
+
+You can find our guide to multi-stage build support in CEKit in the
+link:https://docs.cekit.io/en/develop/handbook/multi-stage.html[development version of the documentation].
+
+A link:https://github.com/cekit/cekit/tree/master/tests/images/multi-stage[real-world example can be found in CEKit repository].
+We use it for integration testing as well and it is mentioned in the above documentation too.
+
+== OSBS builder improvements
+
+Besides multi-stage builds other two feature that were added are related to the OSBS builder.
+Both are related to the CI/CD usage of CEKit.
+
+1. Allow for non-interactive builds with `--assume-yes` switch,
+2. Allow for sync with dist-git repository without triggering the build with `--sync-only` switch.
+
+== Availability
+
+This release is immediately available on link:https://pypi.org/project/cekit/[PyPI]. Packages
+were built for Fedora and EPEL too.
+
+Latest packages submitted for particular Fedora or EPEL versions can be found always in
+link:https://bodhi.fedoraproject.org/updates/?packages=cekit[Bodhi]. Besides this you can always
+see link:https://koji.fedoraproject.org/koji/packageinfo?packageID=28120[latest CEKit builds in Koji].
