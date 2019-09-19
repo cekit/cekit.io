@@ -1,0 +1,81 @@
+---
+title: "CEKit 3.5.0 (and others) released"
+author: "Marek Goldmann"
+date: 2019-09-19
+tags: ["release"]
+draft: false
+---
+
+This is a special release day actually. Today we released 3 versions of CEKit.
+Two bugfixes and one scheduled release. Let me go through these.
+
+== CEKit 3.2.1 and 3.3.2 bugfix releases
+
+NOTE:   These releases are available only on link:https://pypi.org/project/cekit/[PyPi],
+        there will be *no RPMs* prepared for these versions.
+
+To support Middleware teams on the route to continuous development (CI/CD)
+and not to interrupt their current workflows at thea same time I decided to
+backport changes from the 3.4.0 codebase into 3.2.x and 3.3.x series.
+
+Usually we would not see it, because CEKit development is linear, we move
+forward with releases and once a new version is released, support for older releases
+is very limited and we urge to upgrade to latest released version.
+
+In this case interruptions done by moving to new version could cause delays
+in product delivery and a decision was made to backport required changes
+to both 3.2.x and 3.3.x series.
+
+Above releases are exceptions to the general rule.
+
+=== Backported features
+
+There are only two features that were backported and both are related to
+the OSBS builder engine parameters, which make it more flexible.
+
+1.  Support for syncing with dist-git repository without waiting for confirmation
+    (`--assume-yes` switch)
+2.  Support for interrupting the build process after the codebase is synced with
+    dist-git. This means that the code will be available in dist-git, but
+    no build in OSBS would be kicked (`--sync-only` switch)
+
+And that's all, no other changes were made to the CEKit codebase.
+
+* link:https://github.com/cekit/cekit/releases/tag/3.2.1[CEKit 3.2.1 release notes]
+* link:https://github.com/cekit/cekit/releases/tag/3.3.2[CEKit 3.3.2 release notes]
+
+== CEKit 3.5.0
+
+The 3.5.0 release contains a few features that 
+
+=== Squashing support for Buildah and Podman
+
+We've added support for squashing images in the Podman and Buildah builders. Squashing,
+similarly to Docker, is now enabled by default. It can be disabled by using the `--no-squash`
+switch.
+
+=== Multi-stage builds documentation
+
+Support for multi-stage builds was added in 3.4.0 release, but it was a tech-preview.
+This time the link:http://docs.cekit.io/en/latest/handbook/multi-stage.html[documentation was added]
+and the multi-stage builds becomes now a regular feature.
+
+=== Koji target in descriptor
+
+It is possible to define the Koji target directly in the image descriptor. This is useful
+when the build is executed in a non-standard branch, without the proper configuration.
+
+=== Improvements in modules handling
+
+Modules that do not have content (for example define only labels or environment variables)
+will not be added to the image at build time. This means that the build can be executed a little bit faster
+and resulting image will have less layers.
+
+=== Availability
+
+This release is immediately available on link:https://pypi.org/project/cekit/[PyPI]. Packages
+were built for Fedora and EPEL too.
+
+Latest packages submitted for particular Fedora or EPEL versions can be found always in
+link:https://bodhi.fedoraproject.org/updates/?packages=cekit[Bodhi]. Besides this you can always
+see link:https://koji.fedoraproject.org/koji/packageinfo?packageID=28120[latest CEKit builds in Koji].
