@@ -1,0 +1,65 @@
+---
+title: "CEKit 3.6.0 released"
+author: "Marek Goldmann"
+date: 2019-11-06
+tags: ["release"]
+draft: false
+---
+
+This is another minor CEKit release. It contains fixes for a few bugs reported
+as well as some general improvements. You can see link:https://github.com/cekit/cekit/releases/tag/3.6.0[full release notes here].
+Below you can find highlights of this release.
+
+== Alpine Linux support
+
+Alpine Linux support was added. Even before you could base on Alpine Linux image, but this
+time you can also install packages using the APK package manager. Please give it a try if
+you like this distro and let us know if you find any issues.
+
+Here is a sample image definition that uses this feature:
+
+{{< highlight yaml >}}
+name: "alpine-image"
+version: "1.0.0"
+from: "alpine:3.10"
+description: "Some Alpine image"
+
+packages:
+    manager: apk
+    install:
+        - python3
+{{< /highlight >}}
+
+* https://github.com/cekit/cekit/issues/609
+
+== Overrides processing fixes
+
+A few bugs were found when processing overrides, especially in the `packages` and `osbs` sections.
+Merging of the `packages` section was rewritten and it should be possible now to override content sets
+properly.
+
+* https://github.com/cekit/cekit/issues/628
+* https://github.com/cekit/cekit/issues/631
+
+== Better support for `ref` key in Git resources
+
+The Git resource ref key can handle commit hashes or tags as well. Previously only branches were supported.
+
+{{< highlight yaml >}}
+modules:
+    repositories:
+        - git:
+            url: https://github.com/cekit/example-common-module.git
+            ref: eed03bf98ecef55b41c914a47b95fc78cf09fbb7
+{{< /highlight >}}
+
+* https://github.com/cekit/cekit/issues/618
+
+== Availability
+
+This release is immediately available on link:https://pypi.org/project/cekit/[PyPI]. Packages
+were built for Fedora and EPEL too.
+
+Latest packages submitted for particular Fedora or EPEL versions can be found always in
+link:https://bodhi.fedoraproject.org/updates/?packages=cekit[Bodhi]. Besides this you can always
+see link:https://koji.fedoraproject.org/koji/packageinfo?packageID=28120[latest CEKit builds in Koji].
