@@ -1,0 +1,72 @@
+---
+title: "CEKit 3.7.0 released"
+author: "Marek Goldmann"
+date: 2020-07-29
+tags: ["release"]
+draft: false
+---
+
+After long time without a release, we have finally another minor delivery
+which is focused on two things:
+
+1. Adding support for base images
+2. Multiple fixes for multi-stage builds
+
+You can see link:https://github.com/cekit/cekit/releases/tag/3.7.0[full release notes here].
+Below you can find highlights of this release.
+
+== Base image support
+
+Statically compiled binaries are very common in the cloud environment. Such binaries make it possible
+to be added to a container image without the need for any other libraries. This approach results
+in small size of the container image. Another benefit is to remove all unnecessary libraries
+that may be subject for potential CVE's.
+
+In 3.7.0 CEKit added support for creating base images. To do this you only need to define
+your `from` image as `scratch`.
+
+Here is a sample image definition that uses this feature:
+
+{{< highlight yaml >}}
+name: "cekit-scratch"
+version: "1.0.0"
+from: "scratch"
+
+labels:
+    - name: "io.cekit.test"
+      value: "This is a CEKit test label"
+
+artifacts:
+    # The 'metadata' directory (path relative to image descriptor) will be copied to
+    # the container and placed in /target directory
+    - name: "dir"
+      path: metadata
+      dest: /target
+{{< /highlight >}}
+
+NOTE: Base images are special type of images. This means that not all CEKit features will be available.
+
+Please refer to link:https://docs.cekit.io/en/latest/handbook/scratch.html[the documentation]
+to get more information about this feature. 
+
+== Multi-stage fixes
+
+Multiple issues were found in the multi-stage implementation in CEKit. Luckily, we have a great
+community which helped a lot with providing reproducers and testing proposed fixes as well!
+
+* A bug that prevented using the OSBS builder with multi-stage builds was fixed, link:https://github.com/cekit/cekit/issues/649[#649]
+* Using builder images with different operating systems (and thus package managers) was broken. It was not possible
+  to install packages correctly. This fix fixed making it possible to use correct package manager within the correct container, link:https://github.com/cekit/cekit/issues/646[#646]
+* Overrides are now applied to every image in multi-stage builds (builder images and resulting image as well), link:https://github.com/cekit/cekit/issues/648[#648]
+
+Please refer to link:https://docs.cekit.io/en/latest/handbook/multi-stage.html[multi-stage builds documentation]
+to learn how to use this feature.
+
+== Availability
+
+This release is immediately available on link:https://pypi.org/project/cekit/[PyPI]. Packages
+were built for Fedora and EPEL too.
+
+Latest packages submitted for particular Fedora or EPEL versions can be found always in
+link:https://bodhi.fedoraproject.org/updates/?packages=cekit[Bodhi]. Besides this you can always
+see link:https://koji.fedoraproject.org/koji/packageinfo?packageID=28120[latest CEKit builds in Koji].
