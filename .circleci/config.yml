@@ -22,7 +22,7 @@ jobs:
             sudo apt-get install asciidoctor
       - checkout
       - run: git submodule init && git submodule update
-      - run: cd ~/bin && curl -L https://github.com/gohugoio/hugo/releases/download/v0.54.0/hugo_extended_0.54.0_Linux-64bit.tar.gz | tar xvz
+      - run: cd ~/bin && curl -L https://github.com/gohugoio/hugo/releases/download/v0.75.1/hugo_extended_0.75.1_Linux-64bit.tar.gz | tar xvz
       - run: hugo -v -d www
       - store_artifacts:
           path: www

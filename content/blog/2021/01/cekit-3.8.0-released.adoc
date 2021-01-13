@@ -1,0 +1,33 @@
+---
+title: "CEKit 3.8.0 released"
+author: "Nick Cross"
+date: 2021-01-15
+tags: ["release"]
+draft: false
+---
+
+
+To celebrate the start of 2021 we have another minor release which adds some important features and has one user-visible change.
+
+You can see link:https://github.com/cekit/cekit/releases/tag/3.8.0[full release notes here].
+Below you can find highlights of this release.
+
+== OSBS Enhancements/Changes
+
+1. Instead of previously downloading, caching the artifact in the build environment and usng the lookaside cache, builds using OSBS will now instead add a direct link to link:https://osbs.readthedocs.io/en/latest/users.html#fetch-artifacts-url-yaml[fetch-artifacts-url.yaml].
+2. Builds that use the `redhat` flag will now add the artifact description as a comment to the fetch-artifacts-url.yaml file.
+
+== Cachito Integration
+
+Extra configuration for Cachito maybe be passed in via the link:https://docs.cekit.io/en/latest/descriptor/image.html#osbs[OSBS descriptor].
+This allows CEKIt to use the Cachito integration within OSBS as described
+link:https://osbs.readthedocs.io/en/latest/users.html#fetching-source-code-from-external-source-using-cachito[here].
+
+== Availability
+
+This release is immediately available on link:https://pypi.org/project/cekit/[PyPI]. Packages
+were built for Fedora and EPEL too.
+
+Latest packages submitted for particular Fedora or EPEL versions can be found always in
+link:https://bodhi.fedoraproject.org/updates/?packages=cekit[Bodhi]. Besides this you can always
+see link:https://koji.fedoraproject.org/koji/packageinfo?packageID=28120[latest CEKit builds in Koji].
