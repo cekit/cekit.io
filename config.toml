@@ -35,7 +35,7 @@ pygmentsUseClasses = true
 		title = "Features"
 
 	[params.gettingstarted]
-		hide  = true
+		hide  = false
 		title = "Getting started"
 
 	[params.recentposts]
