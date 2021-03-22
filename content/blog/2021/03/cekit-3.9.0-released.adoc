@@ -10,7 +10,7 @@ draft: false
 CEKit isn't COVID isolating and has another release for you!
 
 
-You can see link:https://github.com/cekit/cekit/releases/tag/3.9.0[full release notes here].
+You can see link:https://github.com/cekit/cekit/releases/tag/3.9[full release notes here].
 Below you can find highlights of this release.
 
 == GitHub Action
