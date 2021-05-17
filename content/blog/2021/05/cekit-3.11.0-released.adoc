@@ -1,0 +1,49 @@
+---
+title: "CEKit 3.11.0 released"
+author: "Nick Cross"
+date: 2021-05-17
+tags: ["release"]
+draft: false
+---
+
+
+This minor CEKit release contains several improvements, compatibility changes and some important bug fixes. You can see
+link:https://github.com/cekit/cekit/releases/tag/3.11.0[full release notes here]. Below you can find highlights of this release.
+
+
+== Colour output
+
+It is now possible to disable colour output which is useful within CI environments.
+
+== OSBS and URLs
+
+For working with OSBS and URL based artifacts it is now possible to restrict to a set of acceptable domains for files to be added
+to ``fetch_artifacts_url`` (instead of the lookside cache) via the ``fetch_url_domains`` configuration option.
+
+== Extra Dir Changes
+
+The method how ``extra_dir`` contents are copied has changed so that it will now copy the entire directory instead of just the
+contents. Further it now provides the ability to add ``COPY`` instructions to the Dockerfile and clean up contents from prior runs.
+
+== Cachito Fixes
+
+Missing ``WORKDIR`` and incorrect locations for instructions within the Dockerfile have been resolved.
+
+== Multi-stage build fixes
+
+Various fixes when using OSBS together with multi-stage builder images have been added.
+
+== Microdnf Compatilbility
+
+Prior releases of CEKit added ``install_weak_deps`` to the default microdnf flags which is not compatible with earlier versions of
+microdnf (such as those used in ubi7). Therefore ``package_manager_flags`` has been added to allow users to override the default
+flags for those using legacy microdnf.
+
+== Availability
+
+This release is immediately available on link:https://pypi.org/project/cekit/[PyPI]. Packages
+were built for Fedora and EPEL too.
+
+Latest packages submitted for particular Fedora or EPEL versions can be found always in
+link:https://bodhi.fedoraproject.org/updates/?packages=cekit[Bodhi]. Besides this you can always
+see link:https://koji.fedoraproject.org/koji/packageinfo?packageID=28120[latest CEKit builds in Koji].
