@@ -9,14 +9,14 @@
       <p>
         <a href="https://docs.cekit.io/en/latest/descriptor/image.html">Define container images in YAML format</a> which is easy to read and parse!
       </p>
-      <pre><code>from: "centos:7"
-name: "centos/openjdk-8-centos7"
-version: "1.6"
-description: "Source To Image (S2I) image for Red Hat OpenShift providing OpenJDK 8"</code></pre>
+      <pre><code>from: "registry.access.redhat.com/ubi8/ubi-minimal"
+name: "ubi8/openjdk-8"
+version: "1.10"
+description: "Source To Image (S2I) image for Red Hat OpenShift providing OpenJDK 1.8"</code></pre>
       <p>
         See the
         <a
-          href="https://github.com/jboss-container-images/openjdk/blob/develop/image.yaml"
+          href="https://github.com/jboss-container-images/openjdk/blob/develop/ubi8-openjdk-8.yaml"
           >OpenJDK image</a
         >
         for full example.
