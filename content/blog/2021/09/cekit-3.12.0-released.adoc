@@ -1,0 +1,35 @@
+---
+title: "CEKit 3.12.0 released"
+author: "Nick Cross"
+date: 2021-09-06
+tags: ["release"]
+draft: false
+---
+
+
+This minor CEKit release contains several improvements and bug fixes. You can see
+link:https://github.com/cekit/cekit/releases/tag/3.12.0[full release notes here]. Below you can find highlights of this release.
+
+
+== Support for PNC Artifact Type
+
+A new PNC Artifact type is now available for artifacts built within the link:https://github.com/project-ncl/pnc[ProjectNCL]
+build system and are intended to be used with the OSBS
+link:https://osbs.readthedocs.io/en/latest/users.html#fetch-artifacts-pnc-yaml[``fetch-artifacts-pnc.yaml``].
+
+== Custom ``gating.yaml``
+
+CEKit now supports custom ``gating.yaml`` files that are used within the Container Verification Pipeline (CVP).
+
+== Reading for stdin
+
+CEKit now supports reading from standard input for the main image descriptor using the special notation of ``-``.
+
+== Availability
+
+This release is immediately available on link:https://pypi.org/project/cekit/[PyPI]. Packages
+were built for Fedora and EPEL too.
+
+Latest packages submitted for particular Fedora or EPEL versions can be found always in
+link:https://bodhi.fedoraproject.org/updates/?packages=cekit[Bodhi]. Besides this you can always
+see link:https://koji.fedoraproject.org/koji/packageinfo?packageID=28120[latest CEKit builds in Koji].
