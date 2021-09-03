@@ -2,7 +2,6 @@ baseurl = "https://cekit.io/"
 languageCode = "en-us"
 title = "CEKit"
 theme = "hugo-strata-theme"
-disqusShortname = "cekit-io"
 googleAnalytics = "UA-134837956-1"
 paginate = 10
 pygmentsUseClasses = true
