@@ -28,7 +28,7 @@ of this feature. Please refer to the next development version (3.5) documentatio
 You can find our guide to multi-stage build support in CEKit in the
 link:https://docs.cekit.io/en/develop/handbook/multi-stage.html[development version of the documentation].
 
-A link:https://github.com/cekit/cekit/tree/master/tests/images/multi-stage[real-world example can be found in CEKit repository].
+A link:https://github.com/cekit/cekit/tree/main/tests/images/multi-stage[real-world example can be found in CEKit repository].
 We use it for integration testing as well and it is mentioned in the above documentation too.
 
 == OSBS builder improvements
