@@ -1,0 +1,32 @@
+---
+title: "CEKit 3.13.0 released"
+author: "Nick Cross"
+date: 2022-02-17
+tags: ["release"]
+draft: false
+---
+
+
+This minor CEKit release contains several improvements and bug fixes. You can see
+link:https://github.com/cekit/cekit/releases/tag/3.13.0[full release notes here]. Below you can find highlights of this release.
+
+
+== Support for remote overrides
+
+Allow for fetching override files from a remote URL resource.
+
+== Documentation and Conscious Language Changes
+
+Improved documentation and changed primary branch name to `main`.
+
+== Availability
+
+This release is immediately available on link:https://pypi.org/project/cekit/[PyPI].
+
+NOTE: Packages have not been built for this release due to Fedora upgrading `pykwalify` to
+1.8.0 which is incompatible with Python 2.7. The next CEKit release will drop Python 2.7 support and all
+packages will be rebuilt for Fedora and EPEL then.
+
+Latest packages submitted for particular Fedora or EPEL versions can be found always in
+link:https://bodhi.fedoraproject.org/updates/?packages=cekit[Bodhi]. Besides this you can always
+see link:https://koji.fedoraproject.org/koji/packageinfo?packageID=28120[latest CEKit builds in Koji].
