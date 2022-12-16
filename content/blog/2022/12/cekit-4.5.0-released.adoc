@@ -1,0 +1,32 @@
+---
+title: "CEKit 4.5.0 released"
+author: "Nick Cross"
+date: 2022-12-16
+tags: ["release"]
+draft: false
+---
+
+This minor CEKit release contains several improvements and bug fixes. You can see
+link:https://github.com/cekit/cekit/releases/tag/4.5.0[full release notes here].
+Below you can find highlights of this release.
+
+
+== Test Features
+
+Enable inclusion/exclusion of features using regex.
+
+== MacOS Support for Podman
+
+Search for Podman binary to enable support on MacOS.
+
+== Internal improvements
+
+Type hints have been added to make future maintenance easier.
+
+== Availability
+
+This release is immediately available on link:https://pypi.org/project/cekit/[PyPI].
+
+Latest packages submitted for particular Fedora or EPEL versions can be found always in
+link:https://bodhi.fedoraproject.org/updates/?packages=cekit[Bodhi]. Besides this you can always
+see link:https://koji.fedoraproject.org/koji/packageinfo?packageID=28120[latest CEKit builds in Koji].
