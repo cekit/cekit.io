@@ -1,4 +1,4 @@
-baseurl = "https://cekit.io/"
+baseURL = "https://cekit.io/"
 languageCode = "en-us"
 title = "CEKit"
 theme = "hugo-strata-theme"
